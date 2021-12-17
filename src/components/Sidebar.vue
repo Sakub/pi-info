@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <h2 class="sidebar__header">
-      <a href="/">pi-<span class="text-secondary">info</span></a>
+      <a href="/">pi-<span class="text-primary">info</span></a>
     </h2>
   </div>
 </template>
@@ -22,6 +22,7 @@
     text-align: center;
     margin-top: 1rem;
     text-decoration: none;
+    font-weight: normal;
   }
   .sidebar__header a,
   .sidebar__header a:visited {

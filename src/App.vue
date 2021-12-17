@@ -14,9 +14,10 @@
 
 <style>
   :root {
-    --bg-primary: #0d0237;
-    --bg-secondary: #2b2152;
-    --text-secondary: #a00710;
+    --bg-primary: #2b2e4a;
+    --bg-secondary: #141626;
+    --text-primary: #ce4145;
+    --text-secondary: #5f648e;
   }
   * {
     margin: 0;
@@ -26,6 +27,9 @@
   body {
     margin: 0;
     padding: 0;
+  }
+  .text-primary {
+    color: var(--text-primary);
   }
   .text-secondary {
     color: var(--text-secondary);

@@ -1,11 +1,11 @@
 <template>
   <div class="dashboard">
-    <Card title="cpu temp" :value="cpuTemp" class="cpuTemp" />
-    <Card title="gpu temp" :value="gpuTemp" class="ramUsage" />
-    <Card title="storage" class="cpuChart" />
-    <Card title="network" class="memory" />
-    <Card title="network" class="cpuUsage" />
-    <Card title="network" class="storage" />
+    <Card title="CPU temp" :value="cpuTemp" class="cpuTemp" />
+    <Card title="RAM usage" :value="gpuTemp" class="ramUsage" />
+    <Card title="CPU chart" class="cpuChart" />
+    <Card title="Available memory" class="memory" />
+    <Card title="CPU usage" class="cpuUsage" />
+    <Card title="Storage" class="storage" />
   </div>
 </template>
 
