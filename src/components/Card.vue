@@ -6,15 +6,21 @@
     <p class="card__value">
       {{ value }}<span class="card__unit text-primary">{{ unit }}</span>
     </p>
+    <CpuChart v-if="title.includes('chart')" :tempList="tempList" />
   </div>
 </template>
 <script>
+  import CpuChart from '@/components/CpuChart.vue';
   export default {
     name: 'Card',
     props: {
       title: String,
       value: null,
       className: String,
+      tempList: Array,
+    },
+    components: {
+      CpuChart,
     },
     data() {
       return {

@@ -1,16 +1,17 @@
 <template>
   <div class="dashboard">
     <Card title="CPU temp" :value="cpuTemp" class="cpuTemp" />
-    <Card title="RAM usage" :value="gpuTemp" class="ramUsage" />
-    <Card title="CPU chart" class="cpuChart" />
-    <Card title="Available memory" class="memory" />
-    <Card title="CPU usage" class="cpuUsage" />
+    <Card title="GPU temp" :value="gpuTemp" class="gpuTemp" />
+    <Card title="CPU chart" :tempList="tempList" class="cpuChart" />
+    <Card title="Available memory" :value="memoryAvailable" class="memory" />
+    <Card title="CPU usage" :value="cpuUsage" class="cpuUsage" />
     <Card title="Storage" class="storage" />
   </div>
 </template>
 
 <script>
   const API_URL = 'http://localhost:3000';
+  const API_CALL_INTERVAL = 5000;
   import Card from '@/components/Card.vue';
   export default {
     name: 'Dashboard',
@@ -21,15 +22,26 @@
       return {
         cpuTemp: 0,
         gpuTemp: 0,
+        cpuUsage: 0,
+        memoryAvailable: 0,
+        tempList: [],
       };
     },
+    methods: {
+      fetchApi() {
+        fetch(API_URL)
+          .then(res => res.json())
+          .then(data => {
+            this.cpuTemp = data.cpuTemp;
+            this.gpuTemp = data.gpuTemp;
+            this.cpuUsage = data.cpuUsage;
+            this.memoryAvailable = data.memoryAvailable;
+            this.tempList.push(data.cpuTemp);
+          });
+      },
+    },
     mounted() {
-      fetch(API_URL)
-        .then(res => res.json())
-        .then(data => {
-          this.cpuTemp = data.cpuTemp;
-          this.gpuTemp = data.gpuTemp;
-        });
+      setInterval(this.fetchApi, API_CALL_INTERVAL);
     },
   };
 </script>
@@ -45,7 +57,7 @@
     align-items: center;
     justify-content: center;
     grid-template-areas:
-      'cpuTemp ramUsage cpuChart cpuChart'
+      'cpuTemp gpuTemp cpuChart cpuChart'
       'memory cpuUsage cpuChart cpuChart'
       'storage storage storage storage';
   }
@@ -53,8 +65,8 @@
   .cpuTemp {
     grid-area: cpuTemp;
   }
-  .ramUsage {
-    grid-area: ramUsage;
+  .gpuTemp {
+    grid-area: gpuTemp;
   }
   .cpuChart {
     grid-area: cpuChart;
