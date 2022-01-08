@@ -1,10 +1,10 @@
 <template>
   <div class="dashboard">
     <Card title="CPU temp" :value="cpuTemp" class="cpuTemp" />
-    <Card title="GPU temp" :value="gpuTemp" class="gpuTemp" />
+    <Card title="CPU usage" :value="cpuUsage" class="cpuUsage" />
     <Card title="CPU chart" :tempList="tempList" class="cpuChart" />
     <Card title="Available memory" :value="memoryAvailable" class="memory" />
-    <Card title="CPU usage" :value="cpuUsage" class="cpuUsage" />
+    <Card title="Lorem" :value="cpuUsage" class="lorem" />
     <Card title="Storage" class="storage" />
   </div>
 </template>
@@ -57,16 +57,16 @@
     align-items: center;
     justify-content: center;
     grid-template-areas:
-      'cpuTemp gpuTemp cpuChart cpuChart'
-      'memory cpuUsage cpuChart cpuChart'
+      'cpuTemp cpuUsage cpuChart cpuChart'
+      'memory lorem cpuChart cpuChart'
       'storage storage storage storage';
   }
 
   .cpuTemp {
     grid-area: cpuTemp;
   }
-  .gpuTemp {
-    grid-area: gpuTemp;
+  .lorem {
+    grid-area: lorem;
   }
   .cpuChart {
     grid-area: cpuChart;
